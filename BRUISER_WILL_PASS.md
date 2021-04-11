@@ -266,7 +266,7 @@ cd C:\Windows\sysnative\WindowsPowerShell\v1.0\powershell.exe
 
 ````
 ##### 64 bit / 32 bit
-````
+```bash
 [Environment]::Is64BitProcess
 
 if you happen to get unto an ancient windows machine that needs to execute 32 bit binaries its....
