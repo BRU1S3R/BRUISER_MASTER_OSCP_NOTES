@@ -1,4 +1,4 @@
-# I'm the BEST to ever DO IT
+# YOU WILL PASS THE OSCP
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
