@@ -16,10 +16,6 @@
 
 ### LIF/RFI 
 ```bash
-# HTB notes
-
-##### Basic LFI
-````
 =/etc/passwd
 LFI with Path Traversal
 =../../../../../../../../../etc/passwd
