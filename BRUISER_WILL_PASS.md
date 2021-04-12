@@ -619,3 +619,7 @@ vrfy banazai
 vrfy banzai
 252 2.0.0 banzai
 ```
+# Shellshock
+```
+PHP 5.* is on and CGI.bin is 200 we can shellshock
+```
