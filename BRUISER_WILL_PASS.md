@@ -597,3 +597,25 @@ ssh -j firstuser@1st_box:2222 seconduser@2nd_box -D 1080
 # bypass first time prompt when have non-interactive shell
 
 ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no" ...
+```
+# SMTP
+```bash
+└─$ nc -nv 192.168.114.56 25                                                                                                                                            1 ⨯
+(UNKNOWN) [192.168.114.56] 25 (smtp) open
+220 banzai.offseclabs.com ESMTP Postfix (Debian/GNU)
+ehlo you
+250-banzai.offseclabs.com
+250-PIPELINING
+250-SIZE 10240000
+250-VRFY
+250-ETRN
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-8BITMIME
+250-DSN
+250 SMTPUTF8
+vrfy banazai
+550 5.1.1 <banazai>: Recipient address rejected: User unknown in local recipient table
+vrfy banzai
+252 2.0.0 banzai
+```
