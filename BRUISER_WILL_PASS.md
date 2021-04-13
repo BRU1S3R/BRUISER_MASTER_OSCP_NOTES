@@ -687,3 +687,8 @@ Memodripper https://www.kernel-exploits.com/media/memodipper.c
 x64 on Kali worked natty. x86 on my Ubuntu was not reconized. Makes sense.
 
 ```
+# Python Errors
+```bash
+SyntaxError: invalid non-printable character U+200B
+sed 's/\xe2\x80\x8b//g' inputfile
+```
