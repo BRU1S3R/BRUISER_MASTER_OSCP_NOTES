@@ -703,3 +703,7 @@ x64 on Kali worked natty. x86 on my Ubuntu was not reconized. Makes sense.
 SyntaxError: invalid non-printable character U+200B
 sed 's/\xe2\x80\x8b//g' inputfile
 ```
+# CHINESE
+```bash
+https://www.cnblogs.com/littlehann/p/3522990.html
+```
