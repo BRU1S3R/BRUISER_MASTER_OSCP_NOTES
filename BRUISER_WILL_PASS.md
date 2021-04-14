@@ -2,7 +2,6 @@
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
-Upgrade $ /bin/sh to full /bin/bash shell
 python -c "import pty;pty.spawn('/bin/bash')"
 python3 -c "import pty;pty.spawn('/bin/bash')"
 ```
