@@ -619,6 +619,7 @@ vrfy banzai
 # Shellshock
 ```
 PHP 5.* is on and CGI.bin is 200 we can shellshock
+https://www.sevenlayers.com/index.php/125-exploiting-shellshock
 ```
 # MYSQL version 5
 ```bash
