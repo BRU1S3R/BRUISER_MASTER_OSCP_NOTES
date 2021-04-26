@@ -750,3 +750,8 @@ ssh -i id_rsa fox@192.168.66.126
 Invoke the ps1 in the web request and run it in session to bybass security
 ```
 
+# Pivot
+```bash
+echo %userdomain%
+
+```
