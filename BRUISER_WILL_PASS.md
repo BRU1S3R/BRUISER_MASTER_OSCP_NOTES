@@ -755,7 +755,7 @@ echo %userdomain%
 ```
 # eCPPTv2
 
-# ENUM The Target
+# RECON The Target NET
 ```bash
 ping sweep
 nmap -sn 10.50.96.0/23
@@ -785,6 +785,15 @@ MX Record
 Dig
 >>dig @10.50.96.5 foocampus.com -t AXFR +nocookie
 >>host -t axfr foocampus.com 10.50.96.5
+
+nslookup target.com ------------------ dig target.com +short
+nslookup -type=PTR target.com -------- dig target.com PTR
+nslookup -type=MX target.com --------- dig target.com MX
+nslookup -type=NS target.com --------- dig target.com NS
+nslookup ----------------------------- dig axfr @target.com target.com
+> server target.com
+> ls -d target.com 
+
 ```
 # Social Media
 ```bash
@@ -794,5 +803,8 @@ peoplefinders
 CrunchBase
 usenet
 newsgroups
+```
+# Whois
+```bash
 
 ```
