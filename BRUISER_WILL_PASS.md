@@ -815,7 +815,12 @@ newsgroups
 ```bash
 Top choice while performing DNS enumeration
 ```
-##### Whois
+##### Enum Tools
 ```bash
+winfo 192.168.1.123 -n
+Null Session
+net use \\192.168.1.112\IPC$ "" /u:""
+rpcclient -N -U "" 192.168.119.112
+
 
 ```
