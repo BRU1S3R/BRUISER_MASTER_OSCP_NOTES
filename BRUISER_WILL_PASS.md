@@ -749,9 +749,50 @@ ssh -i id_rsa fox@192.168.66.126
 ```bash
 Invoke the ps1 in the web request and run it in session to bybass security
 ```
-
 # Pivot
 ```bash
 echo %userdomain%
+```
+# eCPPTv2
+
+# ENUM The Target
+```bash
+ping sweep
+nmap -sn 10.50.96.0/23
+Host Discovery - No Ping
+nmap -n -sn -PS22,135,443,445 10.50.96.0/23
+DNS Discovery
+nmap -sS -sU -p53 -n 10.50.96.0/23
+
+Name Sever
+1) >>nslookup
+2) >>server 10.50.96.5
+3) >>set q=NS
+4) >>foocampus.com
+foocampus.com nameserver = ns.foocampus.com.
+foocampus.com nameserver = ns1.foocampus.com.
+>> nslookup 
+>> server 10.50.96.5 
+>> ns.foocampus.com
+>> ns1.foocampus.com
+
+MX Record
+>> nslookup
+>> server 10.50.96.5
+>> set q=MX
+>> foocampus.com
+
+Dig
+>>dig @10.50.96.5 foocampus.com -t AXFR +nocookie
+>>host -t axfr foocampus.com 10.50.96.5
+```
+# Social Media
+```bash
+www.pipl.com
+spokeo
+peoplefinders
+CrunchBase
+usenet
+newsgroups
 
 ```
