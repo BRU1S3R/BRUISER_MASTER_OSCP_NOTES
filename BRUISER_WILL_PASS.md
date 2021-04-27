@@ -794,6 +794,12 @@ nslookup ----------------------------- dig axfr @target.com target.com
 > server target.com
 > ls -d target.com 
 
+Bing IP filter
+ip:199.111.11.123
+Domaintools
+DNSlytics
+Networkappers
+Robtex
 ```
 # Social Media
 ```bash
