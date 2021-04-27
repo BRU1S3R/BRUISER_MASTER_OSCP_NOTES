@@ -749,13 +749,13 @@ ssh -i id_rsa fox@192.168.66.126
 ```bash
 Invoke the ps1 in the web request and run it in session to bybass security
 ```
-# Pivot
+##### Pivot
 ```bash
 echo %userdomain%
 ```
 # eCPPTv2
 
-# RECON The Target NET
+##### RECON The Target NET
 ```bash
 ping sweep
 nmap -sn 10.50.96.0/23
@@ -793,6 +793,7 @@ nslookup -type=NS target.com --------- dig target.com NS
 nslookup ----------------------------- dig axfr @target.com target.com
 > server target.com
 > ls -d target.com 
+whois.icann.org
 
 Bing IP filter
 ip:199.111.11.123
@@ -801,7 +802,7 @@ DNSlytics
 Networkappers
 Robtex
 ```
-# Social Media
+##### Social Media
 ```bash
 www.pipl.com
 spokeo
@@ -810,7 +811,11 @@ CrunchBase
 usenet
 newsgroups
 ```
-# Whois
+####Fierce and Maltigo
+```bash
+Top choice while performing DNS enumeration
+```
+##### Whois
 ```bash
 
 ```
