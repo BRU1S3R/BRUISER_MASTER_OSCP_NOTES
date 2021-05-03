@@ -56,6 +56,14 @@ sudo NetworkManager restart
 ```bash
 smbclient //MOUNT/Yourmomma -I 192.168.154.55 -N
 ```
+##### MOUNT
+```bash
+nmap --script nfs-ls 172.16.80.27
+mkdir /mnt/172.16.80.27_nfs
+mount -t nfs 172.16.80.27:/home/simon /mnt/172.16.80.27_nfs -o nolock
+cp zip /tmp
+
+```
 ##### IMPACKET SYNTAX 
 ```bash
 python smbexec.py 'local_admin:P@ssw0rd123'@172.16.80.100
