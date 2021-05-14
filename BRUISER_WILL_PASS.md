@@ -1,4 +1,4 @@
-# YOU WILL PASS THE OSCP
+# YOU WILL PASS THE eCPPT and OSCP
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
