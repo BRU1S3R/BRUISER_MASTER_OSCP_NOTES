@@ -1,4 +1,4 @@
-# YOU WILL PASS THE eCPPT and OSCP
+# YOU ARE A Certified Professional Penetration Tester
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
