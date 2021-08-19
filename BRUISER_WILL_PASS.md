@@ -77,6 +77,11 @@ cp zip /tmp
 ```bash
 python smbexec.py 'local_admin:P@ssw0rd123'@172.16.80.100
 ```
+##### Banner Grabbing
+```
+nc -nv 192.168.64.54 24007
+```
+
 # SQLi 
 ##### Oracle
 ```bash
