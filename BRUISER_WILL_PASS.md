@@ -4,6 +4,7 @@
  ```bash
 python -c "import pty;pty.spawn('/bin/bash')"
 python3 -c "import pty;pty.spawn('/bin/bash')"
+/usr/bin/script -qc /bin/bash /dev/null
 ```
 ##### FULL INTERACTIVE SHELL...YEEEEAHHHUUHHH...
 ```bash
