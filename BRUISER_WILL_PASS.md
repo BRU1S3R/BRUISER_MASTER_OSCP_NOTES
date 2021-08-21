@@ -466,6 +466,8 @@ print()
 # WINDOWS ENUMERATION
 ```
 nmap -n -sV --script "ldap* and not brute" 192.168.137.122
+ldapsearch -x -h 192.168.137.122 -D '' -w '' -b "DC=hutch,DC=offsec" |
+ grep sAMAccountName:
 ```
 
 # LINUX PRIVESC
