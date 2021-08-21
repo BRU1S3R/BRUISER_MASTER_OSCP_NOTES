@@ -980,8 +980,11 @@ Null Session
 net use \\192.168.1.112\IPC$ "" /u:""
 rpcclient -N -U "" 192.168.119.112
 
+IDENTIFY USERS
 ident-user-enum
 
+ENUMERATE DOMAIN, SHARES, ALL THAT ISH
+nullinux.py
 ```
 ##### Enum NetBIOS Hacking
 ```bash
