@@ -979,6 +979,9 @@ winfo 192.168.1.123 -n
 Null Session
 net use \\192.168.1.112\IPC$ "" /u:""
 rpcclient -N -U "" 192.168.119.112
+
+ident-user-enum
+
 ```
 ##### Enum NetBIOS Hacking
 ```bash
