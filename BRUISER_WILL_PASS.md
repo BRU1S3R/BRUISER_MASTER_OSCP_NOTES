@@ -1,4 +1,4 @@
-# You are A Certified Professional Penetration Tester
+# You are a Certified Professional Penetration Tester
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
@@ -703,6 +703,11 @@ gather sensitive data stored in log files or enumerate user actions and running 
 finging the groups
 find / -group groupx 2>/dev/null
 ```
+### DOCKER WOES
+```
+mount
+df -T /tmp
+
 ### Kernel Exploits
 ```bash
 Ubuntu 16.04.4 kernel priv esc - https://vulners.com/zdt/1337DAY-ID-30003
