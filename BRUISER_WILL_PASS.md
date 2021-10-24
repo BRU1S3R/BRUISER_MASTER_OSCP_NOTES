@@ -78,6 +78,7 @@ cp zip /tmp
 ##### IMPACKET SYNTAX 
 ```bash
 python smbexec.py 'local_admin:P@ssw0rd123'@172.16.80.100
+python3 mssqlclient.py sa:EjectFrailtyThorn425@192.168.130.70 -p 1435
 ```
 ##### Banner Grabbing
 ```
