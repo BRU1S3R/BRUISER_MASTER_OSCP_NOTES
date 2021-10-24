@@ -128,6 +128,8 @@ I had to edit the syntax to create the error but it needed a ', to balance it.
 # SQL General 
 ```bash
 POSTGRES
+psql -h 192.168.130.47 -p 5437 -U postgres
+(Defualt password is postgres)
 postgres=# \c postgres;
 psql (12.2 (Debian 12.2-1+b1), server 11.7 (Debian 11.7-0+deb10u1))
 SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
