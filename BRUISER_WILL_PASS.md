@@ -1,4 +1,4 @@
-# You Are A Pro Read Teamer, You Are Living The DREAM
+# You Are A Pro Red Team/Pentester. GOGETDEMROACHES
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
