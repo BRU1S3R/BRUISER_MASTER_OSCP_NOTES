@@ -126,8 +126,10 @@ I had to edit the syntax to create the error but it needed a ', to balance it.
 ```
 
 # SQL General 
+
+#POSTGRES
 ```bash
-POSTGRES
+https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/authenticated-arbitrary-command-execution-on-postgresql-9-3/
 psql -h 192.168.130.47 -p 5437 -U postgres
 (Defualt password is postgres)
 postgres=# \c postgres;
