@@ -744,6 +744,8 @@ whoami /priv
 netstat –ano
 dir C:\Windows\System32\config\RegBack\SAM
 dir C:\Windows\System32\config\RegBack\SYSTEM
+wmic service get name,pathname,displayname,startmode | findstr /i auto | findstr /i /v "C:\Windows\\" | findstr /i /v """
+reg query HKLM /f pass /t REG_SZ /s
 
 
 windows 7
