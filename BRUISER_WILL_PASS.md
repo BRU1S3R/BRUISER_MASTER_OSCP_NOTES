@@ -674,6 +674,11 @@ for spool or mail directories
 find / ! -path "*/proc/*" -iname "*config*" -type f 2>/dev/null
 ls ~/.ssh
 ```
+Simple usefull things
+```bash
+hashed for passwd file
+openssl passwd -1 -salt ignite pass123
+```
 ##### LD_PRELOAD Privilege Escalation
 ```bash
 sudo -l, see apache2 runs /usr/sbin/apache2
