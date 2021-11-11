@@ -1,4 +1,4 @@
-# You Are A Pro Red Team/Pentester. GOGETDEMROACHES
+# You Are OSCP
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
