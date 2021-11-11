@@ -1,4 +1,4 @@
-https://user-images.githubusercontent.com/79381494/141359427-3eec125f-d82d-44fb-9a34-17851f851dab.png
+![OSCP](https://user-images.githubusercontent.com/79381494/141359427-3eec125f-d82d-44fb-9a34-17851f851dab.png)
 
  # GENERAL
 ##### Lemmie upgrade you
