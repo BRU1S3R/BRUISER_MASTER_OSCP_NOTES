@@ -1,5 +1,7 @@
 ![OSCP](https://user-images.githubusercontent.com/79381494/141359427-3eec125f-d82d-44fb-9a34-17851f851dab.png)
 
+![OSCP Cert](https://user-images.githubusercontent.com/79381494/141603549-9813866b-99d8-48b6-a9a0-86124d351342.png)
+
  # GENERAL
 ##### Lemmie upgrade you
  ```bash
