@@ -1069,6 +1069,11 @@ CALL JNIScriptEngine_eval('new java.util.Scanner(java.lang.Runtime.getRuntime().
 ```bash
 https://www.cnblogs.com/littlehann/p/3522990.html
 ```
+# ASP.NET
+Webshell
+```
+https://packetstormsecurity.com/files/60858/aspxshell.aspx.txt.html
+```
 # RSYNC
 ```bash
 List the shares
@@ -1364,3 +1369,4 @@ find / -perm -4000 2>/dev/null
 # Back to basics
 ```bash
 sudo ip route add 192.168.222.0/24 via 10.175.34.1
+```
