@@ -1373,3 +1373,15 @@ find / -perm -4000 2>/dev/null
 ```bash
 sudo ip route add 192.168.222.0/24 via 10.175.34.1
 ```
+
+
+
+
+
+# Change Mac
+```
+nmcli con show
+look for your DEVICE (eth0) in the last column and use the name of the connection for the following command. Example, if the connection name is "Default":
+
+sudo nmcli con modify Default 802-3-ethernet.cloned-mac-address 00:12:34:56:78:9a
+```
